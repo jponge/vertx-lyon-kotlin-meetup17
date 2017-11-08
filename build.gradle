@@ -1,0 +1,41 @@
+plugins {
+  id 'io.vertx.vertx-plugin' version '0.0.5'
+  id 'org.jetbrains.kotlin.jvm' version '1.1.51'
+}
+
+repositories {
+  jcenter()
+  mavenCentral()
+}
+
+dependencies {
+  compile 'org.jetbrains.kotlin:kotlin-stdlib-jre8'
+
+  compile 'io.vertx:vertx-web'
+  compile 'io.vertx:vertx-web-client'
+
+  compile 'io.vertx:vertx-lang-kotlin'
+  compile 'io.vertx:vertx-lang-kotlin-coroutines:3.5.0'
+
+  compile 'io.vertx:vertx-rx-java2'
+  compile 'io.reactivex.rxjava2:rxkotlin:2.1.0'
+
+  compile 'ch.qos.logback:logback-classic:1.2.3'
+}
+
+vertx {
+  vertxVersion = '3.5.0'
+  mainVerticle = "sample.MainVerticle"
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+  kotlinOptions {
+    jvmTarget = "1.8"
+  }
+}
+
+kotlin {
+  experimental {
+    coroutines 'enable'
+  }
+}
