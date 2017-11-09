@@ -1,13 +1,16 @@
 # JSON
 
+```kotlin
 json {
   obj {
     "foo" to 1
   }
 }
+```
 
 # Bidding service
 
+```kotlin
 class Service : AbstractVerticle() {
 
   val logger = LoggerFactory.getLogger(Service::class.java)
@@ -29,9 +32,12 @@ class Service : AbstractVerticle() {
       }
       .listen(config().getInteger("port", 3000))
   }
+}
+```
 
 # RxJava 2 MainVerticle
 
+```kotlin
 class MainVerticle : AbstractVerticle() {
 
   val logger = LoggerFactory.getLogger(MainVerticle::class.java)
@@ -105,9 +111,11 @@ class MainVerticle : AbstractVerticle() {
     })
   }
 }
+```
 
 # Coroutine and Vert.x playground
 
+```kotlin
 class MainVerticle : CoroutineVerticle() {
 
   val logger = LoggerFactory.getLogger(MainVerticle::class.java)
@@ -145,11 +153,13 @@ class MainVerticle : CoroutineVerticle() {
     }
   }
 }
+```
 
 # Coroutine playground
 
 ## Launch
 
+```kotlin
 fun main(args: Array<String>) = runBlocking {
 
   val jobs = arrayListOf<Job>()
@@ -165,9 +175,11 @@ fun main(args: Array<String>) = runBlocking {
 
   jobs.forEach { it.join() }
 }
+```
 
 ## Channels
 
+```kotlin
 fun main(args: Array<String>) = runBlocking {
 
   val chan = Channel<Int>(10)
@@ -190,9 +202,11 @@ fun main(args: Array<String>) = runBlocking {
 
   println("Done")
 }
+```
 
 ## Select
 
+```kotlin
 fun main(args: Array<String>) = runBlocking {
 
   val ints = Channel<Int>()
@@ -225,9 +239,11 @@ fun main(args: Array<String>) = runBlocking {
 
   println("[done]")
 }
+```
 
 # Coroutine edge service
 
+```kotlin
 class MainVerticle : CoroutineVerticle() {
 
   val logger = LoggerFactory.getLogger(MainVerticle::class.java)
@@ -295,3 +311,4 @@ class MainVerticle : CoroutineVerticle() {
       .end(best?.encode())
   }
 }
+```
